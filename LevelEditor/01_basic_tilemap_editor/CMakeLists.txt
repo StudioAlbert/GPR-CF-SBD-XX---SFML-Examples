@@ -1,0 +1,2 @@
+add_executable(01_basic_tilemap_editor 01_basic_tilemap_editor.cpp)
+target_link_libraries(01_basic_tilemap_editor PRIVATE SFML::Graphics)

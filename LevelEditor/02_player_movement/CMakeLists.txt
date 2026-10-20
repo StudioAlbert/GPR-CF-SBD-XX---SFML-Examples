@@ -1,0 +1,2 @@
+add_executable(02_player_movement 02_player_movement.cpp)
+target_link_libraries(02_player_movement PRIVATE SFML::Graphics)
