@@ -1,0 +1,15 @@
+{
+  "name": "gpr-cf-sbd-xx-sfml-examples",
+  "version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "sfml",
+      "default-features": false,
+      "features": [
+        "graphics",
+        "window",
+        "audio"
+      ]
+    }
+  ]
+}

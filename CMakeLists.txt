@@ -10,17 +10,14 @@ if(MSVC)
     add_compile_options(/utf-8)
 endif()
 
-# SFML est recuperee et compilee ici : rien a installer sur la machine.
-# Statique (BUILD_SHARED_LIBS OFF) : aucune DLL a copier a cote des executables.
-set(BUILD_SHARED_LIBS OFF)
-set(SFML_BUILD_NETWORK OFF)
-
-include(FetchContent)
-FetchContent_Declare(SFML
-        GIT_REPOSITORY https://github.com/SFML/SFML.git
-        GIT_TAG 3.1.0
-        GIT_SHALLOW ON)
-FetchContent_MakeAvailable(SFML)
+# SFML vient de vcpkg, comme dans les projets des etudiants : `vcpkg.json` dit ce
+# qu'il faut, et vcpkg l'installe au moment de la configuration. Les DLL sont
+# recopiees a cote des executables par vcpkg lui-meme, il n'y a rien a faire.
+#
+# Il faut la toolchain vcpkg. CLion la met en place depuis son panneau Vcpkg ;
+# en ligne de commande :
+#   cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
+find_package(SFML 3 COMPONENTS Graphics Audio System REQUIRED)
 
 # Copie le dossier data/ de la cible a cote de son executable.
 # Sans ca, les chemins relatifs du code ne trouvent rien a l'execution.

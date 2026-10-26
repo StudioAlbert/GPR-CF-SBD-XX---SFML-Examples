@@ -6,13 +6,16 @@ répertoire avec sa cible CMake.
 ## Compiler
 
 ```bash
-cmake -S . -B build
+cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake
 cmake --build build
 ```
 
-SFML 3.1.0 est récupérée et compilée par `FetchContent` à la première configuration : rien à
-installer, mais comptez quelques minutes la première fois. Il faut CMake 3.28 ou plus récent et
-un compilateur C++23 (MSVC ici).
+SFML 3.1.0 vient de **vcpkg**, comme dans les projets des étudiants : `vcpkg.json` dit ce qu'il
+faut, et vcpkg l'installe à la configuration. Comptez quelques minutes la première fois, puis
+c'est en cache. Il faut CMake 3.28 ou plus récent, vcpkg, et un compilateur C++23 (MSVC ici).
+
+Sous CLion, le panneau **Vcpkg** met la toolchain en place et la ligne `-DCMAKE_TOOLCHAIN_FILE`
+devient inutile.
 
 Une seule cible à la fois :
 
